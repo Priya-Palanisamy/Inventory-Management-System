@@ -1,0 +1,75 @@
+<html>
+  <head>
+  	<title>Login</title>	
+  	<style>
+  		body{
+  			margin:0;
+  			padding:0;
+            background-image:url({{url_for('static',filename='image/4.jpg')}});
+            background-repeat: no-repeat;
+            background-size:cover;
+  		}
+  		.container{
+  			top:20%;
+  			left:40%;
+  			position:absolute;
+  			transition:translate(-50%,-50%);
+
+  		}
+  		.card{
+  			padding:60px 40px 50px 40px;
+  			background:rgb(50,50,50);
+  			border-radius:10px;
+  		}
+  		#name{
+  			width:200px; 
+  			border:none;
+  			background:transparent;
+  			border-bottom:1px solid white;
+  			padding:6px;
+  			margin-bottom:20px;
+  			color:white;
+  		}
+  		#button{
+  			border-radius:20px;
+  			padding:10px 20px;
+  			background:dodgerblue;
+  			color:white;
+  			margin-top:20px; 
+  			border:none;
+  			outline:none; 
+  			margin-left:50px; 
+  		}
+  		#button:hover{
+  			background-color:white;
+  			color:black;
+  			cursor:pointer;
+  		}
+  		a{
+  			font-size:13px;
+  		}
+        img{
+        	border-radius:50%;
+        	position:absolute;
+        	margin-left:100px;
+        	margin-top:-40px;
+
+        }
+  	</style>	
+  </head>
+  <body>
+  <form method="POST" action="/Login">
+  	  <div class="container">
+  	  	<img src="/static/image/6.jpg" height="80" width="80">
+  	  	<div class="card">
+         <div class="login">  
+  	  		<input type="text" placeholder="Username" id="name" name="username"><br>
+  	  		<input type="password" placeholder="Password" id="name" name="password"><br>
+  	  		<a href="#">Forgot Password?</a><br>
+  	  		<input type="submit" value="submit" id="button">
+         </div> 
+  	  	</div>
+  	  </div>	
+  </form>    
+  </body>
+  </html>  	  	

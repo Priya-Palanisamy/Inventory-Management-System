@@ -1,0 +1,70 @@
+{% extends "overview.html" %}
+{% block content %}
+<style>
+	.alert {
+  padding: 5px;
+  background-color: #66CDAA; 
+  color: white;
+}
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+}
+</style>
+<div>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+     {%if messages %}
+          {%for category, message in messages %}
+            <div class="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+               <h4 style="text-align:center;">{{ message }}</h4>
+            </div>
+          {%endfor%}
+     {%endif %}
+  {%endwith%}
+</div>
+	<h1>Product</h1>
+        <div>
+            <h3 style="display: inline-block;margin-bottom:15px;"> View allocated items in each warehouse</h3>
+
+            <div>
+                <a href="{{url_for('addProduct')}}"><button type="button" class="btn btn-add" data-toggle="modal" data-target="#exampleModal"><span class="btn-icon-add"><i class="glyphicon glyphicon-plus"></i></span>Add Product</button></a>
+            </div>
+	
+		<table class="table table-hover">
+			<tr>
+				<th>ID</th>
+				<th>PRODUCT</th>
+				<th>QUANTITY</th>
+				<th>EDIT</th>
+				<th>DELETE</th>
+			</tr>
+			{% for data in datas %}
+				<tr>
+					<td>{{data.Id}}</td>
+					<td>{{data.Product}}</td>
+					<td>{{data.Quantity}}</td>
+					<td>
+       <a href="{{url_for('editDetails',id=data.Id)}}"><button type="button" class="btn btn-edit" data-toggle="modal"><span class="btn-icon"><i class="glyphicon glyphicon-pencil"></i></span>Edit</button></a>
+                    </td>
+					<td>
+       <a onclick="return confirm('Are you sure to delete?');" href="{{url_for('deleteProducts',id=data.Id)}}"><button type="button" class="btn btn-delete"><span class="btn-icon"><i class="glyphicon glyphicon-trash"></i></span>Delete</button></a>
+                    </td>
+				</tr>
+			{% endfor %}
+		</table>
+{% endblock content %}
+
+
+
